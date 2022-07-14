@@ -13,7 +13,7 @@ composer require yapro/symfony-filesystem-ext
 
 As dev:
 ```sh
-composer require yapro/symfony-filesystem-ext dev-master
+composer require yapro/symfony-filesystem-ext dev-main
 ```
 
 ## Development
