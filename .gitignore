@@ -1,0 +1,6 @@
+/.idea
+/vendor/
+/phpunit.phar
+/.phpunit.result.cache
+/php-cs-fixer.phar
+/phpmd.phar

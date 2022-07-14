@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    YaPro\SymfonyFilesystemExt\:
+        resource: '../'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/SymfonyFilesystemExtBundle.php'
