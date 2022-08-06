@@ -1,6 +1,5 @@
 {
     "name": "yapro/symfony-filesystem-ext",
-    "version": "1.0",
     "type": "symfony-bundle",
     "require": {
         "php": ">=7.4.0",
