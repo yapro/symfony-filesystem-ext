@@ -3,7 +3,7 @@
     "version": "1.0",
     "type": "symfony-bundle",
     "require": {
-        "php": "7.4.*",
+        "php": ">=7.4.0",
         "ext-curl": "*",
         "psr/log": "*",
         "symfony/filesystem": "*",
