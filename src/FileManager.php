@@ -32,6 +32,8 @@ class FileManager
         curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible;)'); // for bypass the user agent check
         curl_setopt($curl, CURLOPT_URL, $fileUrl); // urlencode($fileUrl)
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); // for curl_exec return result (not status)
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); // to follow any "Location: " header that the server sends as part of the HTTP header.
+        curl_setopt($curl, CURLOPT_MAXREDIRS, 10); // The maximum amount of HTTP redirections to follow.
         $result = curl_exec($curl);
         curl_close($curl);
         if (false === $result) {
@@ -89,16 +91,31 @@ class FileManager
      *
      * @return string
      */
-    public function moveToFolder(string $filePath, string $folderPath, string $fileName = ''): string
+    public function moveToFolder(string $filePath, string $folderPath, string $fileName = '', int $mode = 0775): string
     {
         $folderPathExisted = rtrim($folderPath, '/');
-        $this->filesystem->mkdir($folderPathExisted, 0700);
+        $this->filesystem->mkdir($folderPathExisted, $mode);
         $file = new File($filePath);
         $fileName = $fileName === '' ? $this->getUniqString() . date('-H-i-s') : $fileName;
         $filePathNew = $folderPathExisted . '/' . $fileName . '.' . $file->guessExtension();
         $this->filesystem->rename($filePath, $filePathNew);
 
         return $filePathNew;
+    }
+
+    public function getExtension(string $filePath): string
+    {
+        return (new File($filePath))->guessExtension();
+    }
+
+    public function move(string $filePathFrom, string $filePathTo, int $mode = 0775): string
+    {
+        $pathParts = explode('/', $filePathTo);
+        array_pop($pathParts);
+        $this->filesystem->mkdir(implode('/', $pathParts), $mode);
+        $this->filesystem->rename($filePathFrom, $filePathTo);
+
+        return $filePathTo;
     }
 
     public function getFileAddress(string $fileAddress, string $ignoreDomain = '', $isOnlyHttpAddress = true): string
