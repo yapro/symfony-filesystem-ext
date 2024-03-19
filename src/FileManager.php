@@ -89,12 +89,13 @@ class FileManager
      *
      * @return string
      */
-    public function moveToFolder(string $filePath, string $folderPath): string
+    public function moveToFolder(string $filePath, string $folderPath, string $fileName = ''): string
     {
         $folderPathExisted = rtrim($folderPath, '/');
         $this->filesystem->mkdir($folderPathExisted, 0700);
         $file = new File($filePath);
-        $filePathNew = $folderPathExisted . '/' . $this->getUniqString() . date('-H-i-s') . '.' . $file->guessExtension();
+        $fileName = $fileName === '' ? $this->getUniqString() . date('-H-i-s') : $fileName;
+        $filePathNew = $folderPathExisted . '/' . $fileName . '.' . $file->guessExtension();
         $this->filesystem->rename($filePath, $filePathNew);
 
         return $filePathNew;
