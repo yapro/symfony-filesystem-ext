@@ -8,6 +8,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
+use YaPro\MonologExt\ExtraDataException;
 
 class FileManager
 {
@@ -35,12 +36,16 @@ class FileManager
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); // to follow any "Location: " header that the server sends as part of the HTTP header.
         curl_setopt($curl, CURLOPT_MAXREDIRS, 10); // The maximum amount of HTTP redirections to follow.
         $result = curl_exec($curl);
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
+        if ($httpCode !== 200) {
+            throw new ExtraDataException('The http status code must be 200', $fileUrl);
+        }
         if (false === $result) {
-            throw new \UnexpectedValueException('Problem to download file');
+            throw new ExtraDataException('The problem with downloading the file', $fileUrl);
         }
         if (empty($result)) {
-            throw new \UnexpectedValueException('File content is empty');
+            throw new ExtraDataException('The contents of the file are empty', $fileUrl);
         }
 
         return $result;
