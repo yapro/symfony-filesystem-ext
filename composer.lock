@@ -1081,16 +1081,16 @@
         },
         {
             "name": "yapro/monolog-ext",
-            "version": "v1.0.9",
+            "version": "v1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yapro/monolog-ext.git",
-                "reference": "c0971bd2543a0a3d86d38881e0a00f9bf24a3b05"
+                "reference": "4489593577081a969382f16f7d9a2cc5e0426b0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yapro/monolog-ext/zipball/c0971bd2543a0a3d86d38881e0a00f9bf24a3b05",
-                "reference": "c0971bd2543a0a3d86d38881e0a00f9bf24a3b05",
+                "url": "https://api.github.com/repos/yapro/monolog-ext/zipball/4489593577081a969382f16f7d9a2cc5e0426b0c",
+                "reference": "4489593577081a969382f16f7d9a2cc5e0426b0c",
                 "shasum": ""
             },
             "require": {
@@ -1136,9 +1136,9 @@
             ],
             "support": {
                 "issues": "https://github.com/yapro/monolog-ext/issues",
-                "source": "https://github.com/yapro/monolog-ext/tree/v1.0.9"
+                "source": "https://github.com/yapro/monolog-ext/tree/v1.0.10"
             },
-            "time": "2024-05-15T08:55:05+00:00"
+            "time": "2024-05-15T14:48:41+00:00"
         }
     ],
     "packages-dev": [
