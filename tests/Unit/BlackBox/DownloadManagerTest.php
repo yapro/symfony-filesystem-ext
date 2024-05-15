@@ -25,7 +25,7 @@ class DownloadManagerTest extends TestCase
         // https://web-dev.imgix.net/image/T4FyVKpzu4WKF1kBNvXepbi08t52/WOL6PIpIQHpqsgtKwbJv.png?auto=format
         // https://gblobscdn.gitbook.com/assets%2F-LcLcwJZuHK_1ijBGmcN%2F-LcLcybPiD1fXt9tv9MC%2F-LcLd-s1lguMVuyb1Loz%2Fcgi.jpeg
 
-        $fileInTmpFolder = self::$downloadManager->downloadFile('https://studref.com/htm/img/12/8041/15.png');
+        $fileInTmpFolder = self::$downloadManager->downloadFile('https://yapro.ru/uploads/users/1/2021/03/19/17390e7794840c503479db49c1e864e3feb21764-14-05-37.jpeg');
         $this->assertFileExists($fileInTmpFolder);
     }
 
